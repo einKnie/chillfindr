@@ -27,7 +27,6 @@ class Creds:
 	def __init__(self, file):
 		self._log = log.log(self.__class__.__name__, debug)
 		self._log.dbg("hello from credential")
-		self._ui = ui.Ui()
 		self._data = None
 		self._credfile = file
 		self._init()
@@ -171,6 +170,7 @@ class Auth:
 		self._file = "%s/.cred" %(os.path.split(os.path.realpath(__file__))[0]) if file is None else file
 		self._log.dbg("using credentials file: %s" %(self._file))
 
+		self._ui = ui.Ui()
 		self._creds = Creds(self._file)
 		self._users = {}
 		self._users['unauthorized'] = []
